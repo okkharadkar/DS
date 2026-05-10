@@ -252,3 +252,10 @@ Or add MPJ bin folder to PATH variable.
 | Berkeley            | Direct run                    |
 | Token Ring          | Direct run                    |
 | Election Algorithms | Direct run                    |
+
+---
+
+# References
+
+- https://github.com/Shubham-393/ds
+- https://github.com/MoreMohit/ds
