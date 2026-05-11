@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      max-width: 500px;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-top: 12px;
+    }
+
+    input, select, button {
+      margin-top: 6px;
+      padding: 8px;
+      width: 100%;
+      font-size: 16px;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 12px;
+      background: #f2f2f2;
+      border: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>Simple Calculator API</h1>
+
+  <label for="a">Number A</label>
+  <input id="a" type="number" value="10">
+
+  <label for="b">Number B</label>
+  <input id="b" type="number" value="2">
+
+  <label for="operation">Operation</label>
+  <select id="operation">
+    <option value="add">Add</option>
+    <option value="subtract">Subtract</option>
+    <option value="multiply">Multiply</option>
+    <option value="divide">Divide</option>
+  </select>
+
+  <button onclick="calculate()">Calculate</button>
+
+  <div id="result">Result will appear here.</div>
+
+  <script>
+    async function calculate() {
+      const a = document.getElementById('a').value;
+      const b = document.getElementById('b').value;
+      const operation = document.getElementById('operation').value;
+      const resultBox = document.getElementById('result');
+
+      const url = `/${operation}?a=${encodeURIComponent(a)}&b=${encodeURIComponent(b)}`;
+
+      try {
+        const response = await fetch(url);
+        const text = await response.text();
+        resultBox.textContent = text;
+      } catch (error) {
+        resultBox.textContent = 'Error: ' + error.message;
+      }
+    }
+  </script>
+</body>
+</html>
